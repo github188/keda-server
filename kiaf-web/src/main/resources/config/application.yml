@@ -1,0 +1,55 @@
+server:
+  servlet-path: /kiaf-server
+  tomcat:
+      max-http-post-size: 1024000000
+
+spring:
+  profiles:
+    active: '@profiles.active@'
+
+   datasource:
+       driver-class-name: com.mysql.jdbc.Driver
+       type: com.alibaba.druid.pool.DruidDataSource
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+    physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    format-sql: true
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+          ddl-auto: none
+
+  messages:
+      basename: authority, authz-api, authz-security, message
+
+#跨域支持
+web.cors:
+  enabled: true
+  allowCredentials: true
+  allowedOrigins:
+    - '*'
+  allowedHeaders:
+    - '*'
+  allowedMethods:
+    - '*'
+
+commons.authz.security:
+  permitAllUrl:
+     - "/css/**"
+     - "/js/**"
+     - "/img/**"
+     - "/static/**"
+     - "/public/**"
+     - "/"
+     - "/kiaf/oauth2/**"
+     - "/kiaf/auth/**"
+     - "/kiaf/html/**"
+     - "/kiaf/ws/**"
+
+  # 跳转至登录页的url
+  loginUrl: /kiaf-server/oauth2/authorize
+  # 登录异常的url
+  expiredUrl: /kiaf-server/auth/unauthorized
+  # 未授权
+  unauthorizedUrl: /kiaf-server/auth/unauthorized

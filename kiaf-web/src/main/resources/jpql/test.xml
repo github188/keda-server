@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jpa module="web">
+    <jpql id="select" resultClass="com.mycompany.myapp.kiaf.vo.UserVO">
+        SELECT * FROM film  ORDER BY views DESC LIMIT 2
+    </jpql>
+</jpa>

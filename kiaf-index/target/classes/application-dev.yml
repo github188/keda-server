@@ -1,0 +1,130 @@
+server:
+  port: 8092
+logging:
+  level: info
+spring:
+  datasource:
+     url: jdbc:mysql://localhost:3306/exercise?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+     username: root
+     password: 159357
+     druid:
+         test-on-borrow: false
+         test-while-idle: true
+         test-on-return: false
+         validation-query: select 'x'
+  messages:
+      basename: messages, index
+  kafka:
+      secondary:
+         servers:
+           #从统一设备同步设备数据
+           device:
+              bootstrap-servers: 10.65.5.2:9092
+              consumer:
+                group-id: cdevice-manage-kiaf
+                enable-auto-commit: true
+                auto-offset-reset: earliest
+           ctserver:
+              bootstrap-servers: xxxx:9092
+              consumer:
+                group-id: kiaf-dev
+                enable-auto-commit: true
+                auto-offset-reset: earliest
+                topic: xxxx
+
+
+#统一权限验证
+commons.oauth2.client:
+  #ssoLogoutUri: /access_token/logout
+  #标识
+  client_id: kiaf-server
+  #密钥
+  clientSecret: b3FfRP
+  grantType: password
+  serverUri: http://dev.ctsp.kedacom.com/cloud-rbac  #服务端Server外网地址
+  serverInUri: http://10.65.3.5  #服务端Server内网地址(为了解决内网中调用不能用域名访问的问题)
+  clientUri: http://dev.ctsp.kedacom.com/cloud-rbac-client   #客户端地址
+  username: test      #调用统一权限api使用
+  password: 123456
+commons.authz:
+  enable: true
+
+kedacom.openapi:
+  media.serverUri: http://172.0.0.1
+  ct.server.serverUri: http://dev.ctsp.kedacom.com
+  client:
+    device:
+      url: http://dev.ctsp.kedacom.com
+      name: cdevice-manage-server-8080
+      path: /cdevice-manage-server/cdevice/openapi
+
+# 设备同步配置
+kedacom.openapi.device.notify:
+
+  enable: false
+  # 回调地址
+  callbackUrl: http://172.0.0.1:8080/xxx/sync-device/callback/update/device
+  # 统一设备的地址
+  serverUri: http://test.ctsp.kedacom.com/cdevice-manage
+  # 订阅类型
+  types:
+  # 订阅设备更新
+    - 4
+  # kafka监听的topic,可以是多个
+  # 监听新增删除的消息
+  topics:
+    - "device-notify"
+  # 监听更新状态的消息
+  updateStatusTopics:
+    - "topic-status"
+  # 监听更新位置的消息
+  updateGpsTopics:
+    - "topic-gps"
+  # 同步设备新增时的型号过滤.如果没有配置型号,则同步设备新增时,不会同步
+  # 如果为*,则匹配全部
+  model:
+    - "*"
+  syn:
+    false
+
+#更新view表的时候发送给CTServer私有空间，默认false
+adc:
+  synCTServer:
+    send:
+      enable: false
+#项目启动时发送给CTServer私有空间，默认false
+    start:
+      send:
+        enable: false
+ #发送CTServer时的appName
+  appName: app_name
+  #发送CTServer时的serviceName
+  serviceName: app_service
+ #发送CTServer时单条Kafka消息所包含的设备数。CT-Server最大支持2000，Kafka消息体最大1M。实际测试，配置500时，大约为600KB。根据项目情况进行配置，建议配置500。默认500
+  num: 500
+  app:
+    ezview: true
+
+#更新view表时的阈值，单条记录更新约为20ms。建议配置总授权数的百分之一，即view表记录的百分之一。当更新条数超过该阈值，则会采用全量更新，默认200。
+adc.updateView:
+  threshold: 200
+#启动项目时，进行view表的更新，默认false
+  start:
+    syn: false
+feign:
+  traffic:
+  #推送告警反馈数据给交通
+    url: http://172.76.239.241:9002
+  # 通过微服务获取设备信息。现在微服务这块已经整合到一个war 包里的，但是现在还是要求通过微服务
+  # 的方式去调用获取设备信息的API，所以下面的配置应该是war 包发布后的 IP:端口/上下文路径
+  ezview:
+    url: http://dev.ctsp.kedacom.com/kiaf-server
+    downloadUrl: http://dev.ctsp.kedacom.com/kiaf-server
+  #获取地图上的设备信息
+  map:
+    url: http://10.65.3.5
+
+log:
+  aspect:
+    db: kedacom_log1
+    file: kedacom_log1,kedacom_log2

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+      <groupId>com.mycompany.myapp.kiaf</groupId>
+        <artifactId>kiaf-framework-server</artifactId>
+        <version>1.0.5-RELEASE</version>
+    </parent>
+    <artifactId>kiaf-flyway</artifactId>
+
+   <properties>
+           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+           <flyway-maven-plugin.version>5.1.4</flyway-maven-plugin.version>
+           <db.driver>com.mysql.jdbc.Driver</db.driver>
+           <db.dropFirst>false</db.dropFirst>
+           <db.url>jdbc:mysql://localhost:3306/exercise?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false</db.url>
+           <db.username>exercise</db.username>
+           <db.password>Pass!234</db.password>
+       </properties>
+       <build>
+           <plugins>
+               <plugin>
+                   <groupId>org.flywaydb</groupId>
+                   <artifactId>flyway-maven-plugin</artifactId>
+                   <version>${flyway-maven-plugin.version}</version>
+                   <configuration>
+                       <table>schema_version</table>
+                       <validateOnMigrate>true</validateOnMigrate>
+                       <user>${db.username}</user>
+                       <password>${db.password}</password>
+                       <driver>${db.driver}</driver>
+                       <url>${db.url}</url>
+                       <locations>
+                           <location>db/exec</location>
+                       </locations>
+                   </configuration>
+                   <!--  <executions>
+                         <execution>
+                             <id>migrate</id>
+                             <phase>package</phase>&lt;!&ndash; 要绑定到的生命周期的阶段 &ndash;&gt;
+                             <goals>
+                                 <goal>migrate</goal>&lt;!&ndash; 要绑定的插件的目标 &ndash;&gt;
+                             </goals>
+                         </execution>
+                     </executions>-->
+               </plugin>
+           </plugins>
+       </build>
+       <dependencies>
+           <dependency>
+               <groupId>mysql</groupId>
+               <artifactId>mysql-connector-java</artifactId>
+           </dependency>
+       </dependencies>
+
+   </project>

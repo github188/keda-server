@@ -1,0 +1,9 @@
+com\mycompany\myapp\kiaf\entity\Test.class
+com\mycompany\myapp\kiaf\kiafConfiguration.class
+com\mycompany\myapp\kiaf\controller\web\TestWebController.class
+com\mycompany\myapp\kiaf\dao\TestDao.class
+com\mycompany\myapp\kiaf\vo\TestVO.class
+com\mycompany\myapp\kiaf\controller\admin\TestController.class
+com\mycompany\myapp\kiaf\vo\TestSearchVO.class
+com\mycompany\myapp\kiaf\service\TestService.class
+com\mycompany\myapp\kiaf\service\impl\TestServiceImpl.class

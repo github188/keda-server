@@ -1,0 +1,8 @@
+com.mycompany.myapp.kiaf
+com.mycompany.myapp.kiaf.controller.admin
+com.mycompany.myapp.kiaf.controller.web
+com.mycompany.myapp.kiaf.dao
+com.mycompany.myapp.kiaf.entity
+com.mycompany.myapp.kiaf.service
+com.mycompany.myapp.kiaf.service.impl
+com.mycompany.myapp.kiaf.vo

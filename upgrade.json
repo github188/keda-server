@@ -1,0 +1,9 @@
+{
+	"replace":[
+		"/template-index/pom.xml.ejs",
+		"/template-web/",
+		"/template-flyway/pom.xml.ejs",
+		"/template-base/packageName/log/camelizedBaseNameLogAudit.java.ejs",
+		"/pom.xml.ejs"
+	]
+}

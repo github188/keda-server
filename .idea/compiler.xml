@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="kiaf-base" />
+        <module name="kiaf-flyway" />
+        <module name="kiaf-index" />
+        <module name="kiaf-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="kiaf-base" target="1.8" />
+      <module name="kiaf-flyway" target="1.8" />
+      <module name="kiaf-framework-server" target="1.8" />
+      <module name="kiaf-index" target="1.8" />
+      <module name="kiaf-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

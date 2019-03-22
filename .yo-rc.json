@@ -1,0 +1,12 @@
+{
+    "kiagen": {
+        "existingServerProject": true,
+        "serverFramework": "kiaf-server@0.0.5-RELEASE",
+        "serverFrameworkType": "multiple",
+        "baseName": "kiaf",
+        "packageName": "com.mycompany.myapp",
+        "packageFolder": "com/mycompany/myapp",
+        "opModules": [],
+        "sourceCodeModules": []
+    }
+}

@@ -1,0 +1,75 @@
+server:
+  port: 8092
+logging:
+  level: info
+spring:
+  datasource:
+     url: jdbc:mysql://localhost:3306/exercise?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+     username: root
+     password: 159357
+     druid:
+         test-on-borrow: false
+         test-while-idle: true
+         test-on-return: false
+         validation-query: select 'x'
+  messages:
+      basename: messages, index
+
+commons.oauth2.client:
+   ssoLogoutUri: /access_token/logout
+   client_id: kd-framework-server #标识
+   clientSecret: 123456  #密钥
+   grantType: password
+   serverUri: http://stage.ctsp.kedacom.com/cloud-rbac  #服务端Server外网地址
+   serverInUri: http://stage.ctsp.kedacom.com  #服务端Server内网地址(为了解决内网中调用不能用域名访问的问题)
+   clientUri: http://dev.ctsp.kedacom.com/cloud-rbac-client   #客户端地址
+   serverName: cloud-rbac
+   username: admin         #调用统一权限api使用
+   password: 123456
+commons.authz:
+  enable: true
+
+
+kedacom.openapi:
+  media.serverUri: http://172.0.0.1
+  ct.server.serverUri: http://dev.ctsp.kedacom.com
+  client:
+    device:
+      url: http://dev.ctsp.kedacom.com
+      name: cdevice-manage-server-8080
+      path: /cdevice-manage-server/cdevice/openapi
+
+
+# 设备同步配置
+kedacom.openapi.device.notify:
+  enable: false
+  # 回调地址
+  callbackUrl: http://127.0.0.1:8080/xxx/sync-device/callback/update/device
+  # 统一设备的地址
+  serverUri: http://test.ctsp.kedacom.com/cdevice-manage
+  # 订阅类型
+  types:
+  # 订阅设备更新
+    - 4
+  # kafka监听的topic,可以是多个
+  # 监听新增删除的消息
+  topics:
+    - "device-notify"
+  # 监听更新状态的消息
+  updateStatusTopics:
+    - "topic-status"
+  # 监听更新位置的消息
+  updateGpsTopics:
+    - "topic-gps"
+  # 同步设备新增时的型号过滤.如果没有配置型号,则同步设备新增时,不会同步
+  # 如果为*,则匹配全部
+  model:
+    - "*"
+  syn:
+    false
+
+
+log:
+  aspect:
+    db: kedacom_log1
+    file: kedacom_log1,kedacom_log2

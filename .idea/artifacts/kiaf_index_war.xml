@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kiaf-index:war">
+    <output-path>$PROJECT_DIR$/kiaf-index/target</output-path>
+    <root id="archive" name="kiaf-index-1.0.5-RELEASE.war">
+      <element id="artifact" artifact-name="kiaf-index:war exploded" />
+    </root>
+  </artifact>
+</component>

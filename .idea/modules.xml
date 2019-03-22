@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kiaf-base/kiaf-base.iml" filepath="$PROJECT_DIR$/kiaf-base/kiaf-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kiaf-flyway/kiaf-flyway.iml" filepath="$PROJECT_DIR$/kiaf-flyway/kiaf-flyway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kiaf-framework-server.iml" filepath="$PROJECT_DIR$/kiaf-framework-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kiaf-index/kiaf-index.iml" filepath="$PROJECT_DIR$/kiaf-index/kiaf-index.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kiaf-web/kiaf-web.iml" filepath="$PROJECT_DIR$/kiaf-web/kiaf-web.iml" />
+    </modules>
+  </component>
+</project>

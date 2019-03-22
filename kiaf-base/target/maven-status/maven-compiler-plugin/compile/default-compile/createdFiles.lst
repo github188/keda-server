@@ -1,0 +1,5 @@
+com\mycompany\myapp\kiaf\handler\kiafExceptionHandler.class
+com\mycompany\myapp\kiaf\log\kiafLogAudit.class
+com\mycompany\myapp\kiaf\handler\kiafExceptionHandler$Order.class
+com\mycompany\myapp\kiaf\kiafBaseConfiguration.class
+com\mycompany\myapp\kiaf\log\LogTempDTO.class
